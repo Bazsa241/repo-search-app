@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import RadioBtn from "./RadioBtn"
 
 
 const SearchResult = () => {
@@ -7,26 +8,21 @@ const SearchResult = () => {
       <div className="sort">
         <div className="sort-by">
           <p>Sort by: </p>
-          <input type="radio" name="sort" id="default"/>
-          <label htmlFor="default">default</label>
-          <input type="radio" name="sort" id="stars"/>
-          <label htmlFor="stars">stars</label>
-          <input type="radio" name="sort" id="forks"/>
-          <label htmlFor="forks">forks</label>
+          <RadioBtn label="default"/>
+          <RadioBtn label="stars"/>
+          <RadioBtn label="forks"/>
         </div>
         <div className="order-by">
           <p>Order by: </p>
-          <input type="radio" name="order" id="desc"/>
-          <label htmlFor="desc">desc</label>
-          <input type="radio" name="order" id="asc"/>
-          <label htmlFor="asc">asc</label>
+          <RadioBtn label="desc"/>
+          <RadioBtn label="asc"/>
         </div>
         <div className="total">
           <p>Total results: 1450</p>
         </div>
       </div>
       <div className="result">
-
+        
       </div>
     </ResultContainer>
   )
