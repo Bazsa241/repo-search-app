@@ -8,7 +8,7 @@ const RadioBtn = ({label}) => {
   return (
     <Radio>
       <input type="radio" id="" checked={checked}/>
-      <label htmlFor={label}></label>
+      <label htmlFor={label} onClick={() => setChecked(!checked)}></label>
       <p onClick={() => setChecked(!checked)}>{label}</p>
     </Radio>
   )
@@ -18,7 +18,6 @@ const RadioBtn = ({label}) => {
 const Radio = styled.div`
   display: flex;
   align-items: center;
-  gap: .5rem;
 
   input {
     display: none;
@@ -31,15 +30,17 @@ const Radio = styled.div`
   }
 
   label {
+    cursor: pointer;
     display: block;
-    width: 1rem;
-    height: 1rem;
+    width: 14px;
+    height: 14px;
     border: 2px solid white;
     border-radius: 50%;
   }
 
   p {
     cursor: pointer;
+    padding-left: .5rem;
     user-select: none;
   }
 `

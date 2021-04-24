@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import RadioBtn from "./RadioBtn"
+import Repo from "./Repo"
 
 
 const SearchResult = () => {
@@ -22,7 +23,16 @@ const SearchResult = () => {
         </div>
       </div>
       <div className="result">
-        
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
       </div>
     </ResultContainer>
   )
@@ -30,9 +40,11 @@ const SearchResult = () => {
 
 
 const ResultContainer = styled.div`
-    background: #161B22;
+    /* background: #161B22; */
     padding: 1rem;
-    border: 1px solid #30363d;
+    /* border: 1px solid #30363d; */
+    max-width: 1200px;
+    margin: 0 auto;
 
   .sort {
     display: flex;

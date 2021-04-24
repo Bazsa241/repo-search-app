@@ -39,6 +39,7 @@ const HeaderContent = styled.header`
   padding: 1rem;
   background: #161B22;
   border-bottom: 1px solid #30363d;
+  z-index: 5;
   
   nav {
     display: flex;

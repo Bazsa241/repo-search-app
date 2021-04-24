@@ -4,6 +4,10 @@ import {useState} from "react"
 const CheckBox = ({label}) => {
 
   const [isChecked, setIsChecked] = useState(false)
+  
+  const checking = () => {
+    setIsChecked(!isChecked)
+  }
 
   return (
     <ChkBox>
@@ -11,7 +15,7 @@ const CheckBox = ({label}) => {
              name={label}
              id={label}
              checked={isChecked}
-             onChange={() => setIsChecked(!isChecked)}
+             onChange={checking}
       />
       <label htmlFor={label}>
         <span className="top"></span>
@@ -19,7 +23,7 @@ const CheckBox = ({label}) => {
         <span className="bottom"></span>
         <span className="left"></span>
       </label>
-      <p onClick={() => setIsChecked(!isChecked)}>{label}</p>
+      <p onClick={checking}>{label}</p>
     </ChkBox>
   )
 }

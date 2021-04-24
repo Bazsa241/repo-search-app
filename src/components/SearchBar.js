@@ -26,8 +26,10 @@ const SearchContent = styled.div`
   align-items: center;
   gap: 1rem;
   background: #161B22;
+  max-width: 1200px;
   padding: 1rem;
   border: 1px solid #30363d;
+  margin: 0 auto 2rem;
   
   input {
     margin-right: 1rem;
