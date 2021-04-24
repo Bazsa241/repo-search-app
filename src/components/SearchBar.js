@@ -1,19 +1,28 @@
 import styled, {css} from "styled-components"
 import CheckBox from "./CheckBox"
+import { useSelector, useDispatch } from "react-redux"
+import { refresh, init } from "../actions/actions"
 
 const SearchBar = () => {
+
+  const dispatch = useDispatch()
+  const input = useSelector(state => state)
+  console.log(input);
+
   return (
     <SearchContent>
       <label>Search by:* </label>
       <input type="text"
              placeholder="Search for..."
+             value={input}
+             onChange={(e) => dispatch(refresh(e.target.value))}
       />
       <label>In: </label>
       <CheckBox label="name"/>
       <CheckBox label="description"/>
       <CheckBox label="readme"/>
       <Button>Search</Button>
-      <Button yellow>Reset</Button>
+      <Button yellow onClick={() => dispatch(init())}>Reset</Button>
     </SearchContent>
   )
 }
