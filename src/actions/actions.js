@@ -10,3 +10,15 @@ export const refresh = (input) => ({
 export const init = () => ({
   type: actions.INIT
 })
+
+export const check = (type) => ({
+  type: type,
+})
+
+export const sortBy = (type) => ({
+  type: type
+})
+
+export const orderBy = (type) => ({
+  type: type
+})

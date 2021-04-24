@@ -2,12 +2,17 @@ import styled, {css} from "styled-components"
 import CheckBox from "./CheckBox"
 import { useSelector, useDispatch } from "react-redux"
 import { refresh, init } from "../actions/actions"
+import * as actions from "../actions/actionTypes"
 
 const SearchBar = () => {
 
   const dispatch = useDispatch()
-  const input = useSelector(state => state)
-  console.log(input);
+  const input = useSelector(state => state.searchInput)
+  const name = useSelector(state => state.checkBoxes.name)
+  const readme = useSelector(state => state.checkBoxes.readme)
+  const description = useSelector(state => state.checkBoxes.description)
+  const state = useSelector(state => state)
+  console.log(state);
 
   return (
     <SearchContent>
@@ -18,9 +23,18 @@ const SearchBar = () => {
              onChange={(e) => dispatch(refresh(e.target.value))}
       />
       <label>In: </label>
-      <CheckBox label="name"/>
-      <CheckBox label="description"/>
-      <CheckBox label="readme"/>
+      <CheckBox label="name"
+                action={actions.NAME}
+                value={name}
+      />
+      <CheckBox label="description"
+                action={actions.DESCRIPTION}
+                value={description}
+      />
+      <CheckBox label="readme"
+                action={actions.README}
+                value={readme}
+      />
       <Button>Search</Button>
       <Button yellow onClick={() => dispatch(init())}>Reset</Button>
     </SearchContent>

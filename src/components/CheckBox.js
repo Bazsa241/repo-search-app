@@ -1,12 +1,12 @@
 import styled from "styled-components"
-import {useState} from "react"
+import { useDispatch } from "react-redux"
+import {check} from "../actions/actions"
 
-const CheckBox = ({label}) => {
+const CheckBox = ({label, value, action}) => {
 
-  const [isChecked, setIsChecked] = useState(false)
-  
+  const dispatch = useDispatch()
   const checking = () => {
-    setIsChecked(!isChecked)
+    dispatch(check(action))
   }
 
   return (
@@ -14,7 +14,7 @@ const CheckBox = ({label}) => {
       <input type="checkbox"
              name={label}
              id={label}
-             checked={isChecked}
+             checked={value}
              onChange={checking}
       />
       <label htmlFor={label}>

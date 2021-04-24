@@ -1,15 +1,20 @@
 import styled from "styled-components"
-import {useState} from "react"
+import { useDispatch } from "react-redux"
 
-const RadioBtn = ({label}) => {
+const RadioBtn = ({label, value, actionType, action}) => {
 
-  const [checked, setChecked] = useState(false)
+  const dispatch = useDispatch()
+  const onChangeHandler = () => {
+    dispatch(action(actionType))
+  }
+
+  const checked = value === label || ( value === "" && label === "default" )
 
   return (
     <Radio>
-      <input type="radio" id="" checked={checked}/>
-      <label htmlFor={label} onClick={() => setChecked(!checked)}></label>
-      <p onClick={() => setChecked(!checked)}>{label}</p>
+      <input type="radio" checked={checked} onChange={onChangeHandler}/>
+      <label htmlFor={label} onClick={onChangeHandler}></label>
+      <p onClick={onChangeHandler}>{label}</p>
     </Radio>
   )
 }
