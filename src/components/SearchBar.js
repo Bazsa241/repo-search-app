@@ -41,8 +41,6 @@ const SearchBar = () => {
   )
 }
 
-// #8b949e
-// #c9d1d9
 
 const SearchContent = styled.div`
   display: flex;
