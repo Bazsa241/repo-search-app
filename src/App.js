@@ -1,5 +1,6 @@
 import Header from "./components/Header"
 import SearchBar from "./components/SearchBar"
+import SearchResult from "./components/SearchResult"
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <Header />
       <SearchBar />
+      <SearchResult />
     </div>
   );
 }
