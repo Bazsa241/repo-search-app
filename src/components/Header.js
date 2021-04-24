@@ -56,6 +56,7 @@ const HeaderContent = styled.header`
         cursor: pointer;
         padding: .5rem 0;
         border-bottom: 2px solid white;
+        user-select: none;
       }
     }
   }
@@ -107,6 +108,7 @@ const DropDown = styled.ul`
 
   li {
     cursor: pointer;
+    user-select: none;
   }
 
   ${props => props.open && css`
