@@ -27,6 +27,7 @@ const Header = () => {
   )
 }
 
+
 const HeaderContent = styled.header`
   position: fixed;
   top: 0;
