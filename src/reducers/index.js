@@ -3,6 +3,7 @@ import searchInput from "./searchInput"
 import sorting from "./sorting"
 import isLoading from "./isLoading"
 import searchResult from "./searchResult"
+import menuSelect from "./menuSelect"
 import { combineReducers } from "redux"
 
 const allreducers = combineReducers({
@@ -10,7 +11,8 @@ const allreducers = combineReducers({
   searchInput,
   sorting,
   isLoading,
-  searchResult
+  searchResult,
+  menuSelect
 })
 
 export default allreducers

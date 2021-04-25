@@ -35,3 +35,7 @@ export const loading = () => ({
 export const notLoading = () => ({
   type: actions.NOT_LOADING
 })
+
+export const menuChoose = (type) => ({
+  type: type
+})

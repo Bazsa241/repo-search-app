@@ -1,25 +1,24 @@
 import Header from "./components/Header"
-import SearchBar from "./components/SearchBar"
-import SearchResult from "./components/SearchResult"
-import LoadingMask from "./components/LoadingMask"
+import Search from "./components/Search"
+import History from "./components/History"
 import {useSelector} from "react-redux"
+import * as actions from "./actions/actionTypes"
 
 function App() {
 
-  const isLoading = useSelector(state => state.isLoading)
-  const hasResult = useSelector(state => state.searchResult).items.length > 0
-  const showResult = hasResult && !isLoading
+  const menu = useSelector(state => state.menuSelect)
+  const showSearch = menu === actions.SEARCH_MENU
+  const showHistory = menu === actions.HISTORY_MENU
 
   return (
     <div className="App">
       <Header />
-      <SearchBar />
       {
-        isLoading && <LoadingMask />
+        showSearch && <Search />
       }
       {
-        showResult && <SearchResult />
-      }    
+        showHistory && <History />
+      }      
     </div>
   );
 }

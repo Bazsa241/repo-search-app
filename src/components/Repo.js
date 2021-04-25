@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import dummyPng from "./tmp/dummy.png"
+// import dummyPng from "./tmp/dummy.png"
 import dateFormatter from "../utils/dateFormatter"
 
 
@@ -14,7 +14,7 @@ const Repo = ({repo}) => {
     <RepoContent>
       <div className="name">
         <h3>{repo.name}</h3>
-        <a href={repo.html_url} target="_blank"><p>{repo.full_name}</p></a>
+        <a href={repo.html_url} rel="noreferrer" target="_blank"><p>{repo.full_name}</p></a>
       </div>
       <div className="stars-watchers">
         <p>Stars: {repo.stargazers_count}</p>
@@ -37,7 +37,7 @@ const Repo = ({repo}) => {
       <div className="owner">
         <p>By: {repo.owner.login}</p>
       </div>
-      <a href={repo.owner.html_url} target="_blank" className="picture">
+      <a href={repo.owner.html_url} target="_blank" rel="noreferrer" className="picture">
         <img src={repo.owner.avatar_url} alt="avatar"/>
       </a>
     </RepoContent>

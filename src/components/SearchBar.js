@@ -13,8 +13,14 @@ const SearchBar = () => {
   const name = useSelector(state => state.checkBoxes.name)
   const readme = useSelector(state => state.checkBoxes.readme)
   const description = useSelector(state => state.checkBoxes.description)
-  const state = useSelector(state => state)
-  console.log(state);
+  // const state = useSelector(state => state)
+  // console.log(state);
+
+  const keyDown = (e) => {
+    if(e.key === "Enter") {
+      onLoad()
+    }
+  }
 
   const onInit = () => {
     dispatch(init())
@@ -31,6 +37,7 @@ const SearchBar = () => {
              placeholder="Search for..."
              value={input}
              onChange={(e) => dispatch(refresh(e.target.value))}
+             onKeyDown={keyDown}
       />
       <label>In: </label>
       <CheckBox label="name"

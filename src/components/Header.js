@@ -1,17 +1,30 @@
 import styled, {css} from "styled-components"
 import {useState} from "react"
+import {useSelector, useDispatch} from "react-redux"
+import * as actions from "../actions/actionTypes"
+import {menuChoose} from "../actions/actions"
 
 const Header = () => {
 
   const [open, setOpen] = useState(false)
+  const dispatch = useDispatch()
+  const currentMenu = useSelector(state => state.menuSelect)
+
+  const selectSearch = () => {
+    dispatch(menuChoose(actions.SEARCH_MENU))
+  }
+
+  const selectHistory = () => {
+    dispatch(menuChoose(actions.HISTORY_MENU))
+  }
 
   return (
-    <HeaderContent>
+    <HeaderContent currentMenu={currentMenu}>
       <h1>Repo Search App</h1>
       <nav>
         <ul className="menu">
-          <li>Search</li>
-          <li>History</li>
+          <li onClick={selectSearch} className="search-menu">Search</li>
+          <li onClick={selectHistory} className="history-menu">History</li>
         </ul>
         <Burger open={open} onClick={() => setOpen(!open)}>
           <span className="top"></span>
@@ -56,9 +69,22 @@ const HeaderContent = styled.header`
       li {
         cursor: pointer;
         padding: .5rem 0;
-        border-bottom: 2px solid white;
+        border-bottom: 2px solid;
+        border-color: transparent;
         user-select: none;
       }
+
+      ${props => props.currentMenu === actions.SEARCH_MENU && css`
+        .search-menu {
+          border-color: white;
+        }
+      `}
+
+      ${props => props.currentMenu === actions.HISTORY_MENU && css`
+        .history-menu {
+          border-color: white;
+        }
+      `}
     }
   }
 `
