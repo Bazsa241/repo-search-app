@@ -19,8 +19,6 @@ const fetchData = () => async (dispatch, getState) => {
   
   dispatch(result(res))
   dispatch(notLoading())
-  // setTimeout(() => {
-  // }, 5000)
   console.log(res)
 }
 

@@ -1,37 +1,44 @@
 import styled from "styled-components"
 import dummyPng from "./tmp/dummy.png"
+import dateFormatter from "../utils/dateFormatter"
 
-const Repo = () => {
+
+// TODO: languages,
+
+const Repo = ({repo}) => {
+
+  const created = dateFormatter(repo.created_at)
+  const updated = dateFormatter(repo.updated_at)
+
   return (
     <RepoContent>
       <div className="name">
-        <h3>Repo name</h3>
-        <p>Repo full name</p>
+        <h3>{repo.name}</h3>
+        <a href={repo.html_url} target="_blank"><p>{repo.full_name}</p></a>
       </div>
       <div className="stars-watchers">
-        <p>Stars: 5</p>
-        <p>Watchers: 5</p>
+        <p>Stars: {repo.stargazers_count}</p>
+        <p>Watchers: {repo.watchers}</p>
       </div>
       <div className="forks-issues">
-        <p>Forks: 5</p>
-        <p>Issues: 5</p>
+        <p>Forks: {repo.forks}</p>
+        <p>Issues: {repo.open_issues}</p>
       </div>
       <div className="description">
-        <p>Repo description text here...</p>
+        <p>{repo.description}</p>
       </div>
       <div className="languages">
-        <p>JavaScript</p>
-        <p>HTML</p>
+        <p>{repo.language}</p>
       </div>
       <div className="create-update">
-        <p>Created at: 2016.12.12</p>
-        <p>Updated at: 2016.12.12</p>
+        <p>Created at: {created}</p>
+        <p>Updated at: {updated}</p>
       </div>
       <div className="owner">
-        <p>By: owner name</p>
+        <p>By: {repo.owner.login}</p>
       </div>
-      <a href="/" className="picture">
-        <img src={dummyPng} alt="profile"/>
+      <a href={repo.owner.html_url} target="_blank" className="picture">
+        <img src={repo.owner.avatar_url} alt="avatar"/>
       </a>
     </RepoContent>
   )
@@ -54,6 +61,11 @@ const RepoContent = styled.div`
     min-height: 2.5rem;
   }
 
+  a {
+    text-decoration: none;
+    color: #ddd; 
+  }
+
   .name {
 
     h3 {
@@ -65,17 +77,16 @@ const RepoContent = styled.div`
     } */
   }
 
-  /* .stars-watchers,
+  .stars-watchers,
   .forks-issues {
-    font-size: .8rem;
-  } */
+    max-width: 10%;
+  }
 
   .description {
-    flex-grow: 1;
+    max-width: 23%;
   }
   
   .languages {
-    flex-grow: 1;
     flex-wrap: wrap;
   }
 

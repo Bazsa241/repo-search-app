@@ -12,6 +12,7 @@ const SearchResult = () => {
 
   const order = useSelector(state => state.sorting.order)
   const sort = useSelector(state => state.sorting.sort)
+  const searchedRepos = useSelector(state => state.searchResult)
 
   return (
     <ResultContainer>
@@ -29,20 +30,13 @@ const SearchResult = () => {
           <RadioBtn label="asc" value={order} actionType={actions.ASC} action={orderBy}/>
         </div>
         <div className="total">
-          <p>Total results: 1450</p>
+          <p>Total results: <span>{searchedRepos.total}</span></p>
         </div>
       </div>
       <div className="result">
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
+        {
+          searchedRepos.items.map(repo => <Repo repo={repo} key={repo.id}/>)
+        }
       </div>
     </ResultContainer>
   )
@@ -74,6 +68,10 @@ const ResultContainer = styled.div`
     .total {
       flex-grow: 1;
       text-align: right;
+
+      span {
+        color: limegreen;
+      }
     }
   }
 
