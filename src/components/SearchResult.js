@@ -44,10 +44,8 @@ const SearchResult = () => {
 
 
 const ResultContainer = styled.div`
-    /* background: #161B22; */
     padding: 1rem;
-    /* border: 1px solid #30363d; */
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
 
   .sort {

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { refresh, init } from "../actions/actions"
 import * as actions from "../actions/actionTypes"
 import fetchData from "../reducers/fetchData"
+import inputValidate from "../utils/inputValidate"
 
 
 const SearchBar = () => {
@@ -13,8 +14,8 @@ const SearchBar = () => {
   const name = useSelector(state => state.checkBoxes.name)
   const readme = useSelector(state => state.checkBoxes.readme)
   const description = useSelector(state => state.checkBoxes.description)
-  // const state = useSelector(state => state)
-  // console.log(state);
+  const state = useSelector(state => state)
+  const valid = inputValidate(state)
 
   const keyDown = (e) => {
     if(e.key === "Enter") {
@@ -27,7 +28,7 @@ const SearchBar = () => {
   }
 
   const onLoad = () => {
-    dispatch(fetchData())
+    valid && dispatch(fetchData())
   }
 
   return (
@@ -54,18 +55,26 @@ const SearchBar = () => {
       />
       <Button onClick={onLoad}>Search</Button>
       <Button yellow onClick={onInit}>Reset</Button>
+      {
+        !valid &&
+        <small className="warning">
+          The input field must have a minimum of 3 characters and one check box selected
+        </small>
+      }
+
     </SearchContent>
   )
 }
 
 
 const SearchContent = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   gap: 1rem;
   background: #161B22;
-  max-width: 1200px;
-  padding: 1rem;
+  max-width: 1300px;
+  padding: 1rem 1rem 2rem;
   border: 1px solid #30363d;
   margin: 0 auto 2rem;
   
@@ -85,6 +94,16 @@ const SearchContent = styled.div`
       border: 1px solid #388bfd;
       box-shadow: 0px 0px 0px 3px #0c2d6b;
     }
+  }
+
+  .warning {
+    background-color: #a10000;
+    color: white;
+    font-weight: 500;
+    position: absolute;
+    bottom: .5rem;
+    padding: 2px;
+    border-radius: 5px;
   }
 `
 

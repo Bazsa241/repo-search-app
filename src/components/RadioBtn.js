@@ -1,11 +1,13 @@
 import styled from "styled-components"
 import { useDispatch } from "react-redux"
+import fetchData from "../reducers/fetchData"
 
 const RadioBtn = ({label, value, actionType, action}) => {
 
   const dispatch = useDispatch()
   const onChangeHandler = () => {
     dispatch(action(actionType))
+    dispatch(fetchData())
   }
 
   const checked = value === label || ( value === "" && label === "default" )

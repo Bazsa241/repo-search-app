@@ -1,14 +1,25 @@
 import styled from "styled-components"
-// import dummyPng from "./tmp/dummy.png"
 import dateFormatter from "../utils/dateFormatter"
+import fetchOther from "../utils/fetchOther"
+import listObjectKeys from "../utils/listObjectKeys"
+import {useState, useEffect} from "react"
 
 
-// TODO: languages,
 
 const Repo = ({repo}) => {
 
+  const [languages, setLanguages] = useState([])
+
   const created = dateFormatter(repo.created_at)
   const updated = dateFormatter(repo.updated_at)
+
+  useEffect(() => {
+    fetchOther(repo.languages_url)
+      .then(data => listObjectKeys(data))
+      .then(data => setLanguages(data))
+  }, [])
+
+  // console.log(languages)
 
   return (
     <RepoContent>
@@ -28,7 +39,9 @@ const Repo = ({repo}) => {
         <p>{repo.description}</p>
       </div>
       <div className="languages">
-        <p>{repo.language}</p>
+        {
+          languages.map(lang => <p key={lang}>{lang}</p>)
+        }
       </div>
       <div className="create-update">
         <p>Created at: {created}</p>
@@ -87,7 +100,20 @@ const RepoContent = styled.div`
   }
   
   .languages {
+    width: 15%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* gap: 5px; */
     flex-wrap: wrap;
+
+    p {
+      background-color: #ddd;
+      color: #0d1117;
+      padding: 2px;
+      margin: 1px;
+      border-radius: 3px;
+    }
   }
 
   /* .create-update {

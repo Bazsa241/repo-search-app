@@ -39,3 +39,7 @@ export const notLoading = () => ({
 export const menuChoose = (type) => ({
   type: type
 })
+
+export const deleteResults = () => ({
+  type: actions.DELETE_RESULTS
+})

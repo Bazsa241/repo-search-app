@@ -1,25 +1,15 @@
-import {result, loading, notLoading} from "../actions/actions"
-
-const buildURL = (state) => {
-  const baseURL = "https://api.github.com/search/repositories?q="
-  const max = "&per_page=10"
-  const order = "&order=" + state.sorting.order
-  const sort = state.sorting.order ? "&sort=" + state.sorting.order : ""
-  let queryString = encodeURIComponent(`${state.searchInput}${state.checkBoxes.name}${state.checkBoxes.readme}${state.checkBoxes.description}`)
-
-  queryString = queryString + order + sort + max
-  return baseURL + queryString
-}
+import {result, loading, notLoading, deleteResults} from "../actions/actions"
+import * as actions from "../actions/actionTypes"
+import buildURL from "../utils/buildURL"
 
 const fetchData = () => async (dispatch, getState) => {
   dispatch(loading())
+  dispatch(deleteResults(actions.DELETE_RESULTS))
   const URL = buildURL(getState())
-  console.log(URL)
-  const res = await fetch(URL).then(data => data.json())
-  
+  console.log(URL);
+  const res = await fetch(URL).then(data => data.json())  
   dispatch(result(res))
   dispatch(notLoading())
-  console.log(res)
 }
 
 export default fetchData
