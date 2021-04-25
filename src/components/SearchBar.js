@@ -3,6 +3,8 @@ import CheckBox from "./CheckBox"
 import { useSelector, useDispatch } from "react-redux"
 import { refresh, init } from "../actions/actions"
 import * as actions from "../actions/actionTypes"
+import fetchData from "../reducers/fetchData"
+
 
 const SearchBar = () => {
 
@@ -13,6 +15,14 @@ const SearchBar = () => {
   const description = useSelector(state => state.checkBoxes.description)
   const state = useSelector(state => state)
   console.log(state);
+
+  const onInit = () => {
+    dispatch(init())
+  }
+
+  const onLoad = () => {
+    dispatch(fetchData())
+  }
 
   return (
     <SearchContent>
@@ -35,8 +45,8 @@ const SearchBar = () => {
                 action={actions.README}
                 value={readme}
       />
-      <Button>Search</Button>
-      <Button yellow onClick={() => dispatch(init())}>Reset</Button>
+      <Button onClick={onLoad}>Search</Button>
+      <Button yellow onClick={onInit}>Reset</Button>
     </SearchContent>
   )
 }

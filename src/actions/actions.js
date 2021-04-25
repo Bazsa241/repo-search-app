@@ -2,9 +2,7 @@ import * as actions from "./actionTypes"
 
 export const refresh = (input) => ({
   type: actions.REFRESH,
-  payload: {
-    input
-  }
+  payload: input
 })
 
 export const init = () => ({
@@ -21,4 +19,11 @@ export const sortBy = (type) => ({
 
 export const orderBy = (type) => ({
   type: type
+})
+
+export const result = (result) => ({
+  type: actions.SEARCH,
+  payload: {
+    result
+  }
 })
