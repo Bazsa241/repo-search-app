@@ -1,4 +1,4 @@
-import {result} from "../actions/actions"
+import {result, loading, notLoading} from "../actions/actions"
 
 const buildURL = (state) => {
   const baseURL = "https://api.github.com/search/repositories?q="
@@ -12,11 +12,16 @@ const buildURL = (state) => {
 }
 
 const fetchData = () => async (dispatch, getState) => {
+  dispatch(loading())
   const URL = buildURL(getState())
-  console.log(URL);
+  console.log(URL)
   const res = await fetch(URL).then(data => data.json())
+  
   dispatch(result(res))
-  console.log(res);
+  dispatch(notLoading())
+  // setTimeout(() => {
+  // }, 5000)
+  console.log(res)
 }
 
 export default fetchData

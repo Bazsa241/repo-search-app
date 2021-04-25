@@ -27,3 +27,11 @@ export const result = (result) => ({
     result
   }
 })
+
+export const loading = () => ({
+  type: actions.LOADING
+})
+
+export const notLoading = () => ({
+  type: actions.NOT_LOADING
+})

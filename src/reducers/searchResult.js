@@ -9,6 +9,11 @@ const searchResult = (state = {total:0, items:[]}, action) => {
           items: action.payload.result.items
         }
         : state
+    case actions.INIT:
+      return {
+        total: 0,
+        items: []
+      }
     default:
       return state
   }
