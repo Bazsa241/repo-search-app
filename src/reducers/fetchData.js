@@ -6,7 +6,6 @@ const fetchData = () => async (dispatch, getState) => {
   dispatch(loading())
   dispatch(deleteResults(actions.DELETE_RESULTS))
   const URL = buildURL(getState())
-  console.log(URL);
   const res = await fetch(URL).then(data => data.json())  
   dispatch(result(res))
   dispatch(notLoading())

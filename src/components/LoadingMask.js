@@ -1,11 +1,9 @@
 import styled from "styled-components"
-// import run from "./tmp/run.gif"
 
 
 const LoadingMask = () => {
   return (
     <Loading>
-      {/* <img src={run} className="run"/> */}
       <div className="outer">
         <div className="inner"></div>
       </div>
@@ -15,15 +13,6 @@ const LoadingMask = () => {
 
 
 const Loading = styled.div`
-  /* position: relative;
-
-  .run {
-    position: absolute;
-    top: 5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-  } */
 
   .outer {
     display: flex;

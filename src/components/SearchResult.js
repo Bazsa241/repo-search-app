@@ -6,8 +6,6 @@ import { useSelector } from "react-redux"
 import { sortBy, orderBy } from "../actions/actions"
 
 
-
-
 const SearchResult = () => {
 
   const order = useSelector(state => state.sorting.order)
@@ -19,15 +17,34 @@ const SearchResult = () => {
       <div className="sort">
         <div className="sort-by">
           <p>Sort by: </p>
-          <RadioBtn label="default" value={sort} actionType={actions.DEFAULT}
-          action={sortBy}/>
-          <RadioBtn label="stars" value={sort} actionType={actions.STARS} action={sortBy}/>
-          <RadioBtn label="forks" value={sort} actionType={actions.FORKS} action={sortBy}/>
+          <RadioBtn label="default"
+                    value={sort}
+                    actionType={actions.DEFAULT}
+                    action={sortBy}
+          />
+          <RadioBtn label="stars"
+                    value={sort}
+                    actionType={actions.STARS}
+                    action={sortBy}
+          />
+          <RadioBtn label="forks"
+                    value={sort}
+                    actionType={actions.FORKS}
+                    action={sortBy}
+          />
         </div>
         <div className="order-by">
           <p>Order by: </p>
-          <RadioBtn label="desc" value={order} actionType={actions.DESC} action={orderBy}/>
-          <RadioBtn label="asc" value={order} actionType={actions.ASC} action={orderBy}/>
+          <RadioBtn label="desc"
+                    value={order}
+                    actionType={actions.DESC}
+                    action={orderBy}
+          />
+          <RadioBtn label="asc"
+                    value={order}
+                    actionType={actions.ASC}
+                    action={orderBy}
+          />
         </div>
         <div className="total">
           <p>Total results: <span>{searchedRepos.total}</span></p>
@@ -72,8 +89,6 @@ const ResultContainer = styled.div`
       }
     }
   }
-
-
 `
 
 export default SearchResult

@@ -20,7 +20,7 @@ function App() {
         showHistory && <History />
       }      
     </div>
-  );
+  )
 }
 
 export default App;
